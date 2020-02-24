@@ -1,0 +1,41 @@
+spring:
+  shardingsphere:
+    datasource:
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: '123456'
+        jdbc-url: jdbc:mysql://10.211.55.23:4001/user
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: '123456'
+        jdbc-url: jdbc:mysql://10.211.55.23:4002/user
+      names: ds0,ds1
+
+    sharding:
+      tables:
+        t_order:
+          actual-data-nodes: ds$->{0..1}.order_$->{1..2}
+          # 分表配置，根据user_id取模
+          table-strategy:
+            inline:
+              algorithm-expression: order_$->{user_id % 2 + 1}
+              sharding-column: user_id
+          # 分库配置，根据order_id取模
+          database-strategy:
+            inline:
+              algorithm-expression: ds$->{id % 2}
+              sharding-column: id
+      # 全局表，两个库中应该都有一个user表，插入的时候，会同时插入两个库
+      broadcast-tables: user
+      # 绑定表，需要设置和拆分的表一对一关系的，这样两张表对应的数据会设置到同一个库中
+      binding-tables: t_order_item
+    props:
+      sql:
+        show: true
+
+mybatis:
+  mapper-locations: /mapper/*.xml
