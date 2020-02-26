@@ -1,5 +1,6 @@
 package com.fxipp.example.sender;
 
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -39,24 +40,24 @@ public class RabbitSender {
      * 发送消息的方法
      *
      * @param body       消息主体
-     * @param properties 额外附加的内容
      */
-    public void send(Object body, Map<String, Object> properties) {
+    public <T> void send(T body, String exchange, String routingKey) {
+        this.send(body, Maps.newHashMap(), exchange, routingKey);
+
+    }
+
+    public <T> void send(T body, Map<String, Object> properties, String exchange, String routingKey) {
+        log.info("发送mq消息, 内容: {}, 附加属性: {}, wxchange: {}, routingKey: {}", body, properties, exchange, routingKey);
         // 构造消息
         MessageHeaders messageHeaders = new MessageHeaders(properties);
-        Message<?> msg = MessageBuilder.createMessage(body, messageHeaders);
+        Message<T> msg = MessageBuilder.createMessage(body, messageHeaders);
 
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
         // 设置回调
         rabbitTemplate.setConfirmCallback(confirmCallback);
-        rabbitTemplate.convertAndSend("exchange-1",
-                "spring-boot-example.rabbit",
+        rabbitTemplate.convertAndSend(exchange,
+                routingKey,
                 msg,
-                // 消息发送之后的回调
-                message -> {
-                    log.info("--> post to do {}", message);
-                    return message;
-                },
                 correlationData);
 
     }
