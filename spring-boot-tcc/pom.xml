@@ -12,6 +12,7 @@
     <modules>
         <module>message-table</module>
         <module>business-order</module>
+        <module>tcc-rabbitmq</module>
     </modules>
     <artifactId>spring-boot-tcc</artifactId>
 

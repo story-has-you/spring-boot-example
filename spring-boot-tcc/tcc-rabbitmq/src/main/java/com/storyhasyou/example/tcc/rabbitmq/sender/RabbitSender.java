@@ -1,4 +1,4 @@
-package com.storyhasyou.example.rabbitmq.sender;
+package com.storyhasyou.example.tcc.rabbitmq.sender;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
