@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fxipp.example.rabbitmq.mapper.OrderMapper">
-    <resultMap id="BaseResultMap" type="com.fxipp.example.rabbitmq.entity.Order">
+<mapper namespace="com.storyhasyou.example.shardingjdbc.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.storyhasyou.example.shardingjdbc.entity.Order">
         <!--@mbg.generated-->
         <!--@Table t_order-->
         <id column="id" jdbcType="BIGINT" property="id"/>
@@ -25,13 +25,13 @@
         delete from t_order
         where id = #{id}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fxipp.example.rabbitmq.entity.Order"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.storyhasyou.example.shardingjdbc.entity.Order"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into t_order (id, total_amout, `status`, user_id)
         values (#{id}, #{totalAmout}, #{status}, #{userId})
     </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fxipp.example.rabbitmq.entity.Order"
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.storyhasyou.example.shardingjdbc.entity.Order"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into t_order
@@ -58,7 +58,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.fxipp.example.rabbitmq.entity.Order">
+    <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.example.shardingjdbc.entity.Order">
         <!--@mbg.generated-->
         update t_order
         <set>
@@ -74,7 +74,7 @@
         </set>
         where id = #{id}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.fxipp.example.rabbitmq.entity.Order">
+    <update id="updateByPrimaryKey" parameterType="com.storyhasyou.example.shardingjdbc.entity.Order">
         <!--@mbg.generated-->
         update t_order
         set total_amout = #{totalAmout},

@@ -24,7 +24,7 @@ spring:
             # 自定义分片策略
             standard:
               sharding-column: id
-              precise-algorithm-class-name: com.fxipp.example.shardingjdbc.config.DefaultPreciseShardingAlgorithm
+              precise-algorithm-class-name: com.storyhasyou.example.shardingjdbc.config.DefaultPreciseShardingAlgorithm
           # 分库配置，根据order_id取模
           database-strategy:
           # 使用内置的策略
