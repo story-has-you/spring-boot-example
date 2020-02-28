@@ -4,8 +4,6 @@ import com.storyhasyou.example.tcc.businessorder.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 /**
  * @author fangxi
  * @date 2020/2/28
@@ -20,7 +18,7 @@ public class OrderService {
      * 订单回调
      */
     public String updateOrderStatus(Long orderId) {
-        return Optional.of(orderRepository.getOne(orderId))
+        return orderRepository.getByIdAndStatus(orderId, 0)
                 .map(order -> {
                     order.setStatus(1);
                     orderRepository.save(order);
