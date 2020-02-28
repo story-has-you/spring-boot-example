@@ -6,6 +6,7 @@
         <module>spring-boot-rabbitmq</module>
         <module>spring-boot-sharding-jdbc</module>
         <module>spring-boot-atomikos</module>
+        <module>spring-boot-tcc</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

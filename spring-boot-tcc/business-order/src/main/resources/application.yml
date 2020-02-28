@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/tcc_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT&useSSL=false
+    username: root
+    password: fx19950722
+    hikari:
+      minimum-idle: 5
+      auto-commit: true
+      idle-timeout: 600000
+      maximum-pool-size: 20
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+server:
+  port: 8081
