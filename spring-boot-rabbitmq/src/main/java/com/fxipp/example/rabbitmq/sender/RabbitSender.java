@@ -1,4 +1,4 @@
-package com.fxipp.example.sender;
+package com.fxipp.example.rabbitmq.sender;
 
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;

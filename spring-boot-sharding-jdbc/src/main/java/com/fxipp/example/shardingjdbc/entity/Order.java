@@ -1,4 +1,4 @@
-package com.fxipp.example.entity;
+package com.fxipp.example.shardingjdbc.entity;
 
 import lombok.Data;
 

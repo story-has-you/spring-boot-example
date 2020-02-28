@@ -1,6 +1,6 @@
-package com.fxipp.example.receive;
+package com.fxipp.example.rabbitmq.receive;
 
-import com.fxipp.example.constants.MqConstant;
+import com.fxipp.example.rabbitmq.constants.MqConstant;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.Exchange;

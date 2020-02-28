@@ -1,6 +1,6 @@
-package com.fxipp.example.mapper;
+package com.fxipp.example.shardingjdbc.mapper;
 
-import com.fxipp.example.entity.Order;
+import com.fxipp.example.shardingjdbc.entity.Order;
 
 import java.util.List;
 

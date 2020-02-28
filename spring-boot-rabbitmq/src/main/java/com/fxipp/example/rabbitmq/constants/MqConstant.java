@@ -1,4 +1,4 @@
-package com.fxipp.example.constants;
+package com.fxipp.example.rabbitmq.constants;
 
 /**
  * @author fangxi

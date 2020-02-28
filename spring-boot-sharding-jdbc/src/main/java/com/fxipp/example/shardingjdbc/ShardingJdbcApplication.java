@@ -1,4 +1,4 @@
-package com.fxipp.example;
+package com.fxipp.example.shardingjdbc;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

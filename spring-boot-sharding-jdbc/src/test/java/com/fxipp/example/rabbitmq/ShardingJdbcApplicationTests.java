@@ -1,7 +1,7 @@
-package com.fxipp.example;
+package com.fxipp.example.rabbitmq;
 
-import com.fxipp.example.entity.Order;
-import com.fxipp.example.mapper.OrderMapper;
+import com.fxipp.example.rabbitmq.entity.Order;
+import com.fxipp.example.rabbitmq.mapper.OrderMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
