@@ -67,7 +67,7 @@ public class RabbitSender {
         Message<T> msg = MessageBuilder.createMessage(body, messageHeaders);
 
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
-        RabbitTemplate rabbitTemplate = this.getRabbitTemplate(exchange, routingKey, confirmCallback != null, confirmCallback);
+        RabbitTemplate rabbitTemplate = this.getRabbitTemplate(exchange, routingKey, confirmCallback);
         rabbitTemplate.convertAndSend(exchange,
                 routingKey,
                 msg,
@@ -75,7 +75,7 @@ public class RabbitSender {
 
     }
 
-    private RabbitTemplate getRabbitTemplate(String topic, String routingKey, boolean ack,  RabbitTemplate.ConfirmCallback confirmCallback) {
+    private RabbitTemplate getRabbitTemplate(String topic, String routingKey, RabbitTemplate.ConfirmCallback confirmCallback) {
         Assert.notNull(topic, "topic must not be null");
         RabbitTemplate rabbitTemplate = rabbitTemplateMap.get(topic);
         if (rabbitTemplate != null) {
@@ -85,7 +85,7 @@ public class RabbitSender {
         newRabbitTemplate.setExchange(topic);
         newRabbitTemplate.setRetryTemplate(new RetryTemplate());
         newRabbitTemplate.setRoutingKey(routingKey);
-        if (ack) {
+        if (confirmCallback != null) {
             newRabbitTemplate.setConfirmCallback(confirmCallback);
         }
         rabbitTemplateMap.putIfAbsent(topic, newRabbitTemplate);
