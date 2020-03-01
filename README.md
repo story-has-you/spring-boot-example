@@ -11,7 +11,7 @@
 | spring-boot-rate-limiter  | 整合Redis+Lua实现分布式限流              |
 | spring-boot-sharding-jdbc | 整合Sharding-JDBC分库分表                |
 | spring-boot-tcc           | 整合本地消息表和MQ方式实现分布式事物     |
-| spring-cloud              | SpringCloud使用     |
+| spring-cloud              | 整合SpringCloud     |
 | spring-cloud-eureka-server| Eureka中心     |
 | spring-cloud-eureka-client| Eureka客户端实例     |
 
