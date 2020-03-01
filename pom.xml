@@ -8,6 +8,7 @@
         <module>spring-boot-atomikos</module>
         <module>spring-boot-tcc</module>
         <module>spring-boot-rate-limiter</module>
+        <module>spring-cloud</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
