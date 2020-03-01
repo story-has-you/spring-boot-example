@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: eureka-client
+server:
+  port: 9001
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    service-url:
+      defalutZone: http://127.0.0.1:8761/eureka/

@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-cloud-eureka-server</module>
+        <module>spring-cloud-eureka-client</module>
     </modules>
     <artifactId>spring-cloud</artifactId>
 
