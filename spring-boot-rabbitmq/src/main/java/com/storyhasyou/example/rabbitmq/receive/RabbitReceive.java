@@ -20,31 +20,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitReceive {
 
+    /**
+     * 接受mq消息
+     */
     @RabbitListener(
             bindings = @QueueBinding(
-                    value = @Queue(value = MqConstant.QUEUE,durable = "true"),
-                    exchange = @Exchange(value = MqConstant.WXCHANGE, type = "topic", ignoreDeclarationExceptions = "true"),
+                    value = @Queue(value = MqConstant.QUEUE, durable = "true"),
+                    exchange = @Exchange(value = MqConstant.EXCHANGE, type = "topic", ignoreDeclarationExceptions = "true"),
                     key = MqConstant.ROUTING_KEY
             )
     )
-    public void onMessage1(Message<String> message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception{
+    public void onMessage(Message<String> message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception {
         log.info("onMessage1: {}", message.getPayload());
         // 业务处理完毕之后，需要手动ack操作，配置文件配置了手动操作
         channel.basicAck(tag, false);
     }
 
 
-
-    @RabbitListener(
-            bindings = @QueueBinding(
-                    value = @Queue(value = MqConstant.QUEUE,durable = "true"),
-                    exchange = @Exchange(value = MqConstant.WXCHANGE, type = "topic", ignoreDeclarationExceptions = "true"),
-                    key = MqConstant.ROUTING_KEY
-            )
-    )
-    public void onMessage2(Message<String> message, Channel channel,  @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception{
-        log.info("onMessage2: {}", message.getPayload());
-        // 业务处理完毕之后，需要手动ack操作，配置文件配置了手动操作
+    @RabbitListener(queues = MqConstant.DELAY_QUEUE)
+    public void delay(Message<String> message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception {
+        log.info("延迟队列: {}", message.getPayload());
         channel.basicAck(tag, false);
     }
 

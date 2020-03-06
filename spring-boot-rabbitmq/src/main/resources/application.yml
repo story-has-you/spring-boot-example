@@ -10,6 +10,8 @@ spring:
     # 生产者配置: 启动消息确认模式
     publisher-confirm-type: correlated
     listener:
+      direct:
+        acknowledge-mode: manual
       simple:
         # 消费者配置: 表示消费成功之后需要手工进行签收(ack)，默认为auto
         acknowledge-mode: manual

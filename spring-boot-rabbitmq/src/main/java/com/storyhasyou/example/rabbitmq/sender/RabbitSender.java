@@ -1,6 +1,8 @@
 package com.storyhasyou.example.rabbitmq.sender;
 
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,7 +14,6 @@ import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -55,12 +56,18 @@ public class RabbitSender {
 
     }
 
+
     public <T> void send(T body, String exchange, String routingKey, RabbitTemplate.ConfirmCallback confirmCallback) {
-        this.send(body, new HashMap<>(), exchange, routingKey, confirmCallback);
+        this.send(body, Maps.newHashMap(), exchange, routingKey, confirmCallback, null);
 
     }
 
-    public <T> void send(T body, Map<String, Object> properties, String exchange, String routingKey, RabbitTemplate.ConfirmCallback confirmCallback) {
+    public <T> void sendDelay(T body, String exchange, String routingKey, MessagePostProcessor messagePostProcessor) {
+        this.send(body, Maps.newHashMap(), exchange, routingKey, null, messagePostProcessor);
+
+    }
+
+    public <T> void send(T body, Map<String, Object> properties, String exchange, String routingKey, RabbitTemplate.ConfirmCallback confirmCallback, MessagePostProcessor messagePostProcessor) {
         log.info("发送mq消息, 内容: {}, 附加属性: {}, wxchange: {}, routingKey: {}", body, properties, exchange, routingKey);
         // 构造消息
         MessageHeaders messageHeaders = new MessageHeaders(properties);
@@ -68,10 +75,11 @@ public class RabbitSender {
 
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
         RabbitTemplate rabbitTemplate = this.getRabbitTemplate(exchange, routingKey, confirmCallback);
-        rabbitTemplate.convertAndSend(exchange,
-                routingKey,
-                msg,
-                correlationData);
+        if (messagePostProcessor == null) {
+            rabbitTemplate.convertAndSend(exchange, routingKey, msg, correlationData);
+        } else {
+            rabbitTemplate.convertAndSend(exchange, routingKey, msg, messagePostProcessor, correlationData);
+        }
 
     }
 
