@@ -62,9 +62,16 @@ public class RabbitSender {
 
     }
 
+    public <T> void sendDelay(T body, String exchange, String routingKey, long ttl) {
+        this.send(body, Maps.newHashMap(), exchange, routingKey, null, message -> {
+            message.getMessageProperties().setExpiration(String.valueOf(ttl));
+            return message;
+        });
+
+    }
+
     public <T> void sendDelay(T body, String exchange, String routingKey, MessagePostProcessor messagePostProcessor) {
         this.send(body, Maps.newHashMap(), exchange, routingKey, null, messagePostProcessor);
-
     }
 
     public <T> void send(T body, Map<String, Object> properties, String exchange, String routingKey, RabbitTemplate.ConfirmCallback confirmCallback, MessagePostProcessor messagePostProcessor) {
