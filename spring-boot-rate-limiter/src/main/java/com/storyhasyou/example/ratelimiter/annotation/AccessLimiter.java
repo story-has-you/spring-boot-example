@@ -16,13 +16,24 @@ import java.util.concurrent.TimeUnit;
 @Documented
 public @interface AccessLimiter {
 
+    /**
+     * 限流方法,redis中的key
+     */
     String methodKey() default "";
 
+    /**
+     * 单位时间内允许的请求
+     */
     int limit() default 10;
 
+    /**
+     * 时间单位
+     */
     TimeUnit unit() default TimeUnit.SECONDS;
 
+    /**
+     * 时间
+     */
     long timeout() default 1;
-
 
 }
