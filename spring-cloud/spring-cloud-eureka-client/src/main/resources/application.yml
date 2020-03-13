@@ -5,8 +5,6 @@ server:
   port: 9001
 
 eureka:
-  instance:
-    hostname: 127.0.0.1
   client:
     service-url:
-      defalutZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://127.0.0.1:10001/eureka/, http://127.0.0.1:10002/eureka/

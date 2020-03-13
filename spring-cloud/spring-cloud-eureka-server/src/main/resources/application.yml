@@ -1,15 +1,3 @@
 spring:
-  application:
-    name: eureka-server
-server:
-  port: 8761
-
-eureka:
-  instance:
-    hostname: 127.0.0.1
-  client:
-    # 注册中心不需要获取注册列表
-    fetch-registry: false
-    # 注册中心不需要将自己注册上去
-    register-with-eureka: false
-
+  profiles:
+    active: peer2
