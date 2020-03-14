@@ -1,7 +1,8 @@
 package com.storyhasyou.example.cloud.config;
 
+import com.netflix.loadbalancer.BestAvailableRule;
 import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.RandomRule;
+import com.storyhasyou.example.cloud.rules.ConsistentHashingRule;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * RibbonClient
  */
 @Configuration
-@RibbonClient(name = "ribbon-example", configuration = RandomRule.class)
+@RibbonClient(name = "ribbon-example", configuration = ConsistentHashingRule.class)
 public class RibbonRuleConfig {
 
     /**
@@ -22,7 +23,7 @@ public class RibbonRuleConfig {
     @Bean
     public IRule rule() {
         // 指定为随机轮询.默认 RoundRobinRule
-        return new RandomRule();
+        return new BestAvailableRule();
     }
 
 }
