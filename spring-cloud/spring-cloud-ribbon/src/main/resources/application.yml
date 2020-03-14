@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ribbon
+server:
+  port: 9002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
+
+# 解决ribbon懒加载问题, 让Ribbon在调用以前就初始化好了
+# 第一个参数开启了Ribbon的饥饿加载模式，第二个属性指定了需要应用饥饿加载的服务名称。
+ribbon:
+  eager-load:
+    enabled: true
+    clients: ribbon
