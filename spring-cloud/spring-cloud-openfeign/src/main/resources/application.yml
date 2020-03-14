@@ -8,3 +8,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://www.mingrxiy.com:8761/eureka/
+
+eureka-client:
+  ribbon:
+    # 每台机器最大的重试次数
+    MaxAutoRetries: 2
+    # 可以再重试几天服务器
+    MaxAutoRetriesNextServer: 2
+    # 连接超时
+    ConnectTimeout: 200
+    # 业务处理超时
+    ReadTimeout: 2000
+    # 在所用的HTTP Method进行重试. 生产环境注意开关.
+    OkToRetryOnAllOperations: true
+
