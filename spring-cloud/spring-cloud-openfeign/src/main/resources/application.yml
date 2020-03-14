@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: feign-example
+server:
+  port: 9003
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
