@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ribbon
+    name: ribbon-example
 server:
   port: 9002
 
@@ -14,4 +14,9 @@ eureka:
 ribbon:
   eager-load:
     enabled: true
-    clients: ribbon
+    clients: ribbon-example
+
+# 指定服务配置负责均衡策略
+ribbon-example:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
