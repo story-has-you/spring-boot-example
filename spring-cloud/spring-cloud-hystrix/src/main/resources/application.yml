@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: hystrix-example
+server:
+  port: 9004
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
+# 开启hystrix
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        # 全局超时
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            # 超时时间
+            timeoutInMilliseconds: 2000
+            # 超时以后终止线程
+            interruptOnTimeout: true
+            # 取消的时候终止线程
+            interruptOnFutureCancel: true
+    # 针对某个方法配置 优先级比默认高
+    IService#retry(Long):
+      execution:
+        # 全局超时
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            # 超时时间
+            timeoutInMilliseconds: 3000
+            # 超时以后终止线程
+            interruptOnTimeout: true
+            # 取消的时候终止线程
+            interruptOnFutureCancel: true
+
+
+eureka-client:
+  ribbon:
+    # 每台机器最大的重试次数
+    MaxAutoRetries: 2
+    # 可以再重试几天服务器
+    MaxAutoRetriesNextServer: 2
+    # 连接超时
+    ConnectTimeout: 1000
+    # 业务处理超时
+    ReadTimeout: 8000
+    # 在所用的HTTP Method进行重试. 生产环境注意开关.
+    OkToRetryOnAllOperations: true

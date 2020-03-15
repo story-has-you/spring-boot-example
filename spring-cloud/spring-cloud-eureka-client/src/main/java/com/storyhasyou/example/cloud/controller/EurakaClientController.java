@@ -3,6 +3,7 @@ package com.storyhasyou.example.cloud.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,5 +29,11 @@ public class EurakaClientController {
         TimeUnit.MILLISECONDS.sleep(timeout);
         log.info("retry");
         return ResponseEntity.ok("retry");
+    }
+
+    @GetMapping("/error/{num}")
+    public ResponseEntity<String> error(@PathVariable Integer num) {
+        int i = 100 / num;
+        return ResponseEntity.ok("ok");
     }
 }
