@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -35,5 +37,14 @@ public class EurakaClientController {
     public ResponseEntity<String> error(@PathVariable Integer num) {
         int i = 100 / num;
         return ResponseEntity.ok("ok");
+    }
+
+    @GetMapping("/cache")
+    public ResponseEntity<Map<String, Object>> cache() {
+        log.info("cache!!!");
+        Map<String, Object> map = new HashMap<>();
+        map.put("abc", 123);
+        map.put("def", 456);
+        return ResponseEntity.ok(map);
     }
 }

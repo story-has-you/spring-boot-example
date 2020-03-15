@@ -16,6 +16,9 @@ feign:
 hystrix:
   command:
     default:
+      # 开启请求缓存, 默认打开
+      requestCache:
+        enabled: true
       execution:
         # 全局超时
         timeout:

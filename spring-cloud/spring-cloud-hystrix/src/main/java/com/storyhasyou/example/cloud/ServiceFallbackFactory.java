@@ -4,6 +4,9 @@ import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+import java.util.Map;
+
 /**
  * @author fangxi
  * @date 2020/3/15
@@ -25,6 +28,11 @@ public class ServiceFallbackFactory implements FallbackFactory<IService> {
             public String retry(Long timeout) {
                 log.error("timeout: {}", timeout);
                 return "retry出错啦!!!";
+            }
+
+            @Override
+            public Map<String, Object> cache() {
+                return Collections.emptyMap();
             }
         };
     }
