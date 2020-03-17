@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: hystrix-turbine
+server:
+  port: 9005
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
+
+# 指定了所需要监控的服务名
+turbine:
+  app-config: hystrix-example
+  cluster-name-expression: new String('default')
+  # 将端口和hostname作为区分不同服务的条件（默认只使用Host）
+  combine-host-port: true
+  instanceInsertPort: false
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
+  aggregator:
+    cluster-config: default

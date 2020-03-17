@@ -76,3 +76,13 @@ eureka-client:
     ReadTimeout: 8000
     # 在所用的HTTP Method进行重试. 生产环境注意开关.
     OkToRetryOnAllOperations: false
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
