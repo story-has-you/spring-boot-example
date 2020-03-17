@@ -16,17 +16,14 @@ import java.util.Map;
 public class ServiceFallbackFactory implements FallbackFactory<IService> {
     @Override
     public IService create(Throwable throwable) {
-        log.error("", throwable);
         return new IService() {
             @Override
             public String error(Integer num) {
-                log.error("num: {}", num);
                 return "error出错啦!!!";
             }
 
             @Override
             public String retry(Long timeout) {
-                log.error("timeout: {}", timeout);
                 return "retry出错啦!!!";
             }
 

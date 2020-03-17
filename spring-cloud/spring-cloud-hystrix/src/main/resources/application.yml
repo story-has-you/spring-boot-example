@@ -16,6 +16,23 @@ feign:
 hystrix:
   command:
     default:
+      metrics:
+        rollingStats:
+          # 配置时间单位
+          timeInMilliseconds: 20000
+      # 默认打开熔断器功能
+      circuitBreaker:
+        # 当熔断开启之后,讲过多少秒再进入熔断的半开状态, 默认小于时间单位
+        sleepWindowInMilliseconds: 15000
+        # 熔断的前提条件, 在一定的时间单位内, 达到5个之后,才开始熔断
+        requestVolumeThreshold: 5
+        # 失败百分比,如果在时间单位内的请求失败几率达到50%, 则开启熔断
+        errorThresholdPercentage: 50
+        enabled: true
+        # 强制开启, 正常方法也会进入熔断,一般不打开
+        forceOpen: false
+        # 强制关闭, 熔断失效. 一般不打开
+        forceClosed: false
       # 开启请求缓存, 默认打开
       requestCache:
         enabled: true
@@ -40,7 +57,7 @@ hystrix:
         isolation:
           thread:
             # 超时时间
-            timeoutInMilliseconds: 3000
+            timeoutInMilliseconds: 1000
             # 超时以后终止线程
             interruptOnTimeout: true
             # 取消的时候终止线程
@@ -51,11 +68,11 @@ eureka-client:
   ribbon:
     # 每台机器最大的重试次数
     MaxAutoRetries: 2
-    # 可以再重试几天服务器
+    # 可以再重试几台服务器
     MaxAutoRetriesNextServer: 2
     # 连接超时
     ConnectTimeout: 1000
     # 业务处理超时
     ReadTimeout: 8000
     # 在所用的HTTP Method进行重试. 生产环境注意开关.
-    OkToRetryOnAllOperations: true
+    OkToRetryOnAllOperations: false
