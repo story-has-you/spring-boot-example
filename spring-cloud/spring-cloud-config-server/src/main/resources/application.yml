@@ -5,4 +5,10 @@ spring:
     config:
       server:
         git:
-          uri: 
+          uri: https://github.com/story-has-you/spring-boot-example.git
+          search-paths: spring-cloud/spring-cloud-config-server/repo
+          # 强制拉取
+          force-pull: true
+
+server:
+  port: 8888
