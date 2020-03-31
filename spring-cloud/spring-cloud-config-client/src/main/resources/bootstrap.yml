@@ -9,3 +9,13 @@ spring:
       name: config-server
 server:
   port: 9007
+
+# 动态刷新需要添加的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
