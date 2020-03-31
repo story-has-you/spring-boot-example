@@ -2,6 +2,7 @@ package com.storyhasyou.example.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
@@ -16,6 +17,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  * http://127.0.0.1:8888/{label}(默认master)/{配置文件名称}.yml
  */
 @EnableConfigServer
+@EnableDiscoveryClient
 @SpringBootApplication
 public class ConfigServerApplication {
 

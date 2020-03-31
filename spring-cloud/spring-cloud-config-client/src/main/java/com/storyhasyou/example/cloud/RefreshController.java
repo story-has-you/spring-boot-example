@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author fangxi
  * @date 2020/3/31
  * @since 1.0.0
+ * http://127.0.0.1:9007/actuator/refresh
+ * 需要post请求这个方法，才会刷新配置
  */
 @RestController
 @RequestMapping("/reflash")

@@ -10,5 +10,11 @@ spring:
           # 强制拉取
           force-pull: true
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
+
 server:
   port: 8888
+

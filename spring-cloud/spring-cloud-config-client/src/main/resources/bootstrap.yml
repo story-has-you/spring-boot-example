@@ -3,10 +3,14 @@ spring:
     name: config-client
   cloud:
     config:
-      uri: http://127.0.0.1:8888
+      # uri: http://127.0.0.1:8888
       profile: dev
       label: master
       name: config-server
+      # 基于Eureka获取 config-server
+      discovery:
+        enabled: true
+        service-id: config-server
 server:
   port: 9007
 
@@ -19,3 +23,8 @@ management:
   endpoint:
     health:
       show-details: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
