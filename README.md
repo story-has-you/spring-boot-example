@@ -2,7 +2,7 @@
 
 
 
-使用SpringBoot整合来整合去
+使用SpringBoot/SpringCloud整合来整合去
 
 | 模块名                    | 说明                                     |
 | ------------------------- | ---------------------------------------- |
@@ -14,4 +14,11 @@
 | spring-cloud              | 整合SpringCloud     |
 | spring-cloud-eureka-server| Eureka中心     |
 | spring-cloud-eureka-client| Eureka客户端实例     |
+| spring-cloud-ribbon       | ribbon使用     |
+| spring-cloud-openfeign    | feign使用示例     |
+| spring-cloud-hystrix      | Hystrix熔断器使用     |
+| spring-cloud-hystrix-dashboard      | Hystrix仪表盘     |
+| spring-cloud-hystrix-turbine      | Hystrix-turbine收集熔断信息     |
+| spring-cloud-config-server      | 分布式配置中心服务端     |
+| spring-cloud-config-client      | 分布式配置中心客户端     |
 
