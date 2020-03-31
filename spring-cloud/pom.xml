@@ -17,6 +17,7 @@
         <module>spring-cloud-hystrix</module>
         <module>spring-cloud-hystrix-turbine</module>
         <module>spring-cloud-hystrix-dashboard</module>
+        <module>spring-cloud-config-server</module>
     </modules>
     <artifactId>spring-cloud</artifactId>
 
