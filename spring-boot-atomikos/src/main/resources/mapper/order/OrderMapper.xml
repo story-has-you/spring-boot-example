@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.storyhasyou.example.atomikos.mapper.order.OrderMapper">
-    <resultMap id="BaseResultMap" type="com.storyhasyou.example.atomikos.entity.Order">
+<mapper namespace="com.storyhasyou.example.boot.mapper.order.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.storyhasyou.example.boot.entity.Order">
         <!--@mbg.generated-->
         <!--@Table t_order-->
         <id column="id" jdbcType="BIGINT" property="id"/>
@@ -25,7 +25,7 @@
         delete from t_order
         where id = #{id,jdbcType=BIGINT}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.storyhasyou.example.atomikos.entity.Order"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.storyhasyou.example.boot.entity.Order"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into t_order (total_amout, `status`, user_id
@@ -34,7 +34,7 @@
         )
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id"
-            parameterType="com.storyhasyou.example.atomikos.entity.Order" useGeneratedKeys="true">
+            parameterType="com.storyhasyou.example.boot.entity.Order" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into t_order
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -60,7 +60,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.example.atomikos.entity.Order">
+    <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.example.boot.entity.Order">
         <!--@mbg.generated-->
         update t_order
         <set>
@@ -76,7 +76,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.storyhasyou.example.atomikos.entity.Order">
+    <update id="updateByPrimaryKey" parameterType="com.storyhasyou.example.boot.entity.Order">
         <!--@mbg.generated-->
         update t_order
         set total_amout = #{totalAmout,jdbcType=DECIMAL},
