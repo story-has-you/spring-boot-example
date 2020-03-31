@@ -9,7 +9,7 @@
         <module>spring-boot-tcc</module>
         <module>spring-boot-rate-limiter</module>
         <module>spring-boot-elasticsearch</module>
-        <module>spring-cloud</module>
+        <module>spring-cloud-example</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

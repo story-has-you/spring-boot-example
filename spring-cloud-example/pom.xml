@@ -20,7 +20,7 @@
         <module>spring-cloud-config-server</module>
         <module>spring-cloud-config-client</module>
     </modules>
-    <artifactId>spring-cloud</artifactId>
+    <artifactId>spring-cloud-example</artifactId>
 
     <properties>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
