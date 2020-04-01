@@ -1,6 +1,6 @@
 spring:
   application:
-    name: feign-example
+    name: spring-cloud-openfeign
 server:
   port: 9003
 

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 从注册中心上获取服务
+          enabled: true
+          # Service名小写
+          lower-case-service-id: true
+      #  通过yaml配置路径规则
+      routes:
+        - id: fegin-client
+          uri: lb://fegin-client
+          predicates:
+            - path=/yml/**
+          filters:
+            - StripPrefix=1
+server:
+  port: 10000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
