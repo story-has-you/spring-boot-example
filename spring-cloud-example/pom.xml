@@ -19,7 +19,6 @@
         <module>spring-cloud-hystrix-dashboard</module>
         <module>spring-cloud-config-server</module>
         <module>spring-cloud-config-client</module>
-        <module>spring-cloud-config-server-bus</module>
     </modules>
     <artifactId>spring-cloud-example</artifactId>
 
