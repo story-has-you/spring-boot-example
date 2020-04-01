@@ -1,4 +1,4 @@
-package com.storyhasyou.example.cloud;
+package com.storyhasyou.example.cloud.config;
 
 import org.springframework.cloud.client.discovery.ReactiveDiscoveryClient;
 import org.springframework.cloud.gateway.discovery.DiscoveryClientRouteDefinitionLocator;
