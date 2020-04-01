@@ -15,6 +15,8 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  * http://127.0.0.1:8888/config-server-dev.yml 获取配置文件信息
  *
  * http://127.0.0.1:8888/{label}(默认master)/{配置文件名称}.yml
+ *
+ * 集成bus之后，访问 http://127.0.0.1:8888/actuator/bus-refresh 刷新全部配置
  */
 @EnableConfigServer
 @EnableDiscoveryClient
