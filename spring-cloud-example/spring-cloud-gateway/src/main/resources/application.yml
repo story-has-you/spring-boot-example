@@ -10,13 +10,15 @@ spring:
           # Service名小写
           lower-case-service-id: true
       #  通过yaml配置路径规则
-      routes:
-        - id: fegin-client
-          uri: lb://fegin-client
-          predicates:
-            - path=/yml/**
-          filters:
-            - StripPrefix=1
+#      routes:
+#        - id: fegin-client
+#          uri: lb://SPRING_CLOUD_OPENFEIGN
+#          predicates:
+#            - path=/yml/**
+#          filters:
+#            - StripPrefix=1
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: 10000
 
