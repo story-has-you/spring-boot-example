@@ -1,5 +1,6 @@
 package com.storyhasyou.example.cloud;
 
+import com.storyhasyou.example.cloud.topic.DelayedTopic;
 import com.storyhasyou.example.cloud.topic.GroupTopic;
 import com.storyhasyou.example.cloud.topic.MyTopic;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,11 @@ public class StreamConsumer {
     @StreamListener(GroupTopic.INPUT)
     public void cunsumeGroup(Object payload) {
         log.info("GroupTopic consumed successfully, paylaod = {}", payload);
+    }
+
+    @StreamListener(DelayedTopic.INPUT)
+    public void cunsumeDelay(MessageDTO payload) {
+        log.info("DelayedTopic consumed successfully, paylaod = {}", payload);
     }
 
 }

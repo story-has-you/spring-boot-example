@@ -20,6 +20,16 @@ spring:
           destination: group-topic
         group-output:
           destination: group-topic
+        # 延迟消息配置
+        delayed-input:
+          destination: delayed-topic
+        delayed-output:
+          destination: delayed-topic
+      rabbit:
+        bindings:
+          delayed-output:
+            producer:
+              delayed-exchange: true
 
 
 server:
