@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-cloud-sleuth
+  sleuth:
+    sampler:
+      # 采样方式100%
+      probability: 1
+server:
+  port: 9009
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.mingrxiy.com:8761/eureka/
