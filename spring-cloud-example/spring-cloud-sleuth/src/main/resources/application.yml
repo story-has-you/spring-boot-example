@@ -5,6 +5,8 @@ spring:
     sampler:
       # 采样方式100%
       probability: 1
+  zipkin:
+    base-url: http://127.0.0.1:9411
 server:
   port: 9009
 
