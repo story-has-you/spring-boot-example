@@ -1,6 +1,7 @@
 package com.storyhasyou.example.boot.receive;
 
 import com.rabbitmq.client.Channel;
+import com.storyhasyou.example.boot.config.DelayedConfig;
 import com.storyhasyou.example.boot.constants.MqConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -40,6 +41,19 @@ public class RabbitReceive {
     @RabbitListener(queues = MqConstant.DELAY_QUEUE)
     public void delay(Message<String> message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception {
         log.info("延迟队列: {}", message.getPayload());
+        channel.basicAck(tag, false);
+    }
+
+    /**
+     * 监听插件实现的延迟队列
+     * @param message
+     * @param channel
+     * @param tag
+     * @throws Exception
+     */
+    @RabbitListener(queues = DelayedConfig.QUEUE_NAME)
+    public void delayByPlugins(Message<String> message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception {
+        log.info("插件实现的延迟队列: {}", message.getPayload());
         channel.basicAck(tag, false);
     }
 

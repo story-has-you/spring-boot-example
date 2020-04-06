@@ -64,6 +64,7 @@ public class RabbitSender {
 
     public <T> void sendDelay(T body, String exchange, String routingKey, long ttl) {
         this.send(body, Maps.newHashMap(), exchange, routingKey, null, message -> {
+            message.getMessageProperties().setHeader("x-delay", ttl);
             message.getMessageProperties().setExpiration(String.valueOf(ttl));
             return message;
         });
