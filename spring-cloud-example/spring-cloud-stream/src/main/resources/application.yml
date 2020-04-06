@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: spring-cloud-stream
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: 123456
+  cloud:
+    stream:
+      bindings:
+        # 绑定Channel到boradcast
+        myTopic-input:
+          destination: broadcast
+        myTopic-output:
+          destination: broadcast
+server:
+  port: 9010
