@@ -14,5 +14,13 @@ spring:
           destination: broadcast
         myTopic-output:
           destination: broadcast
+        group-input:
+          # 消息分组设置
+          group: group-A
+          destination: group-topic
+        group-output:
+          destination: group-topic
+
+
 server:
   port: 9010

@@ -1,5 +1,6 @@
 package com.storyhasyou.example.cloud;
 
+import com.storyhasyou.example.cloud.topic.GroupTopic;
 import com.storyhasyou.example.cloud.topic.MyTopic;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.StreamListener;
@@ -26,6 +27,10 @@ public class StreamConsumer {
     @StreamListener(MyTopic.INPUT)
     public void cunsumeMyMessage(Object payload) {
         log.info("MyTopic consumed successfully, paylaod = {}", payload);
+    }
+    @StreamListener(GroupTopic.INPUT)
+    public void cunsumeGroup(Object payload) {
+        log.info("GroupTopic consumed successfully, paylaod = {}", payload);
     }
 
 }
