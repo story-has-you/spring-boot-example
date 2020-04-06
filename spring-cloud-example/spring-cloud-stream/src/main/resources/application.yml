@@ -25,6 +25,14 @@ spring:
           destination: delayed-topic
         delayed-output:
           destination: delayed-topic
+        # 消息重试
+        error-input:
+          destination: error-topic
+          consumer:
+            # 次数为1的时候不重试，重试次数为 max-attempts - 1 次
+            max-attempts: 2
+        error-output:
+          destination: error-topic
       rabbit:
         bindings:
           delayed-output:
