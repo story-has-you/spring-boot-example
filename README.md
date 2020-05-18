@@ -12,6 +12,7 @@
 | spring-boot-sharding-jdbc | 整合Sharding-JDBC分库分表                |
 | spring-boot-tcc           | 整合本地消息表和MQ方式实现分布式事物     |
 | spring-boot-elasticsearch  | 整合ElasticSearch搜索引擎     |
+| spring-boot-redis-geo  | 整合Redis GEO Api实现位置功能     |
 | spring-cloud-example       | 整合SpringCloud     |
 | spring-cloud-eureka-server| Eureka中心     |
 | spring-cloud-eureka-client| Eureka客户端实例     |

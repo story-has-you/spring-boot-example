@@ -10,6 +10,7 @@
         <module>spring-boot-rate-limiter</module>
         <module>spring-boot-elasticsearch</module>
         <module>spring-cloud-example</module>
+        <module>spring-boot-redis-geo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
