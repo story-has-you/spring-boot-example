@@ -27,7 +27,7 @@
     <artifactId>spring-cloud-example</artifactId>
 
     <properties>
-        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
     </properties>
 
     <dependencyManagement>

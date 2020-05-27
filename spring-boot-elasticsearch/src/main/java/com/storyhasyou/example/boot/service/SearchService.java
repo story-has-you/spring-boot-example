@@ -3,21 +3,25 @@ package com.storyhasyou.example.boot.service;
 import com.storyhasyou.example.boot.entity.QuestionAnswer;
 import com.storyhasyou.example.boot.common.PageResponse;
 import com.storyhasyou.example.boot.repository.SearchRepository;
-import com.storyhasyou.example.boot.resultmapper.HighlightResultMapper;
 import com.storyhasyou.example.boot.vo.QuestionContentRequestVO;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.aggregations.Aggregations;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.SearchHit;
+import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * @author fangxi
@@ -32,15 +36,14 @@ public class SearchService {
 
     public void createIndex() {
         // this.deleteIndex();
-        elasticsearchRestTemplate.createIndex(QuestionAnswer.class);
-        elasticsearchRestTemplate.putMapping(QuestionAnswer.class);
+        elasticsearchRestTemplate.indexOps(QuestionAnswer.class).createMapping();
         // List<QuestionAnswer> questionAnswers = this.questionAnswers();
         // searchRepository.saveAll(questionAnswers);
 
     }
 
     public void deleteIndex() {
-        elasticsearchRestTemplate.deleteIndex(QuestionAnswer.class);
+        elasticsearchRestTemplate.indexOps(QuestionAnswer.class).delete();
     }
 
     public PageResponse<QuestionAnswer> pageByQuestionContent(QuestionContentRequestVO requestVO) {
@@ -60,12 +63,9 @@ public class SearchService {
         }
         NativeSearchQuery searchQuery = queryBuilder.withPageable(pageable).build();
 
-        AggregatedPage<QuestionAnswer> questionAnswerPage = elasticsearchRestTemplate.queryForPage(searchQuery, QuestionAnswer.class,
-                new HighlightResultMapper(questionContent));
-        return PageResponse.of(questionAnswerPage.getContent(),
-                questionAnswerPage.getTotalElements(),
-                (long) questionAnswerPage.getTotalPages(),
-                (long) questionAnswerPage.getSize());
+        SearchHits<QuestionAnswer> searchHits = elasticsearchRestTemplate.search(searchQuery, QuestionAnswer.class);
+        List<QuestionAnswer> questionAnswers = searchHits.stream().map(SearchHit::getContent).collect(Collectors.toList());
+        return PageResponse.of(questionAnswers, searchHits.getTotalHits(), pageable.getOffset(), (long) pageable.getPageSize());
     }
 
 }
