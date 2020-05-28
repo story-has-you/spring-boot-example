@@ -17,7 +17,7 @@ import java.util.HashMap;
  * @date 2020/3/6
  */
 @Configuration
-public class RabbitConfig {
+public class DelayedConfig1 {
 
     /**
      * 创建死信队列(缓冲队列)
