@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.storyhasyou.example.boot.dto";
+option java_outer_classname = "GroupDTO";
+
+message Group {
+    string id = 1;
+    string groupName = 2;
+}
