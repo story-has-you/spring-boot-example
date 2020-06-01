@@ -11,5 +11,12 @@
 
     <artifactId>spring-boot-netty-client</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.storyhasyou.example</groupId>
+            <artifactId>spring-boot-netty-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
