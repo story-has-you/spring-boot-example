@@ -1,5 +1,6 @@
 package com.storyhasyou.example.boot.execute;
 
+import com.storyhasyou.example.boot.dto.MessageBuilder;
 import com.storyhasyou.example.boot.dto.MessageDTO;
 import com.storyhasyou.example.boot.dto.Result;
 import com.storyhasyou.example.boot.scanner.Invoker;
@@ -27,6 +28,6 @@ public class MessageRequest implements Runnable {
         Invoker invoker = InvokerCache.get(module, cmd);
         byte[] data = message.getBody().toByteArray();
         Result<?> result = (Result<?>) invoker.invoke(data);
-        ctx.writeAndFlush(result.getData());
+        ctx.writeAndFlush(MessageBuilder.getResponseMessage(module, cmd, result.getResultType(), result.getData()));
     }
 }
