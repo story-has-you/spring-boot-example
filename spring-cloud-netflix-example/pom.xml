@@ -24,7 +24,7 @@
         <module>spring-cloud-stream</module>
         <module>spring-cloud-sentinel</module>
     </modules>
-    <artifactId>spring-cloud-example</artifactId>
+    <artifactId>spring-cloud-netflix-example</artifactId>
 
     <properties>
         <spring-cloud.version>Hoxton.SR4</spring-cloud.version>

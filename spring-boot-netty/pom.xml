@@ -10,11 +10,10 @@
 
     <artifactId>spring-boot-netty</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
     <modules>
+        <module>spring-boot-netty-common</module>
         <module>spring-boot-netty-client</module>
         <module>spring-boot-netty-server</module>
-        <module>spring-boot-netty-common</module>
     </modules>
 
     <dependencies>
