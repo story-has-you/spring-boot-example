@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option java_package = "com.storyhasyou.example.boot.dto";
-option java_outer_classname = "UserDTO";
-
-message User {
-    string id = 1;
-    string username = 2;
-}

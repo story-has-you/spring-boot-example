@@ -10,7 +10,6 @@
         <module>spring-boot-rate-limiter</module>
         <module>spring-boot-elasticsearch</module>
         <module>spring-boot-redis-geo</module>
-        <module>spring-boot-netty</module>
         <module>spring-cloud-netflix-example</module>
     </modules>
     <parent>
