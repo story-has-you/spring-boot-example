@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-cloud-dubbo-provider
+  main:
+    allow-bean-definition-overriding: true
+
+dubbo:
+  scan:
+    base-packages: com.storyhasyou.example.cloud.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://localhost:8848
